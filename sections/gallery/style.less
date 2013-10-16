@@ -1,24 +1,22 @@
-.pp-gallery-details{
+.pl-gallery-details{
 	text-align: center;
 	padding: 10px 0;
 	
-	.pp-gallery-title{
+	.pl-gallery-title{
 		font-size: 30px;
 		font-weight: 600;
 		color: #23313A;
 	}
-	.pp-gallery-desc{
+	.pl-gallery-desc{
 		font-size: 14px;
 		font-weight: normal;
 	}
 	
 }
-.pp-gallery {
+.pl-gallery {
 	width: 100%;
-	.pp-gallery-slide {
-		.border-radius(4px);
+	.pl-gallery-slide {
 		img{
-			.border-radius(4px);
 		}
 	}
 	
@@ -85,7 +83,7 @@
 
 					.video-nav-img > img{
 
-					   	border-color: #42505e;
+					   	border-color: @pl-link;
 
 					}
 				}
@@ -105,7 +103,11 @@
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
 	
-	#page .pp-gallery-desc{
+	.pl-gallery-slide img.rsImg{
+		margin-left: 0!important;
+	}
+	
+	#page .pl-gallery-desc{
 		display: none;
 	}
  

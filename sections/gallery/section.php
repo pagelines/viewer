@@ -26,7 +26,7 @@ class PLGallery extends PageLinesSection {
 		
 		 <script>
 		      jQuery(document).ready(function(jQuery) {
-		 		jQuery('<?php echo $this->prefix();?> .pp-gallery').royalSlider({
+		 		jQuery('<?php echo $this->prefix();?> .pl-gallery').royalSlider({
 			
 					autoScaleSlider: true,
 					autoHeight: true,
@@ -75,7 +75,7 @@ class PLGallery extends PageLinesSection {
 			'type'	=> 'multi',
 			'opts'	=> array(
 				array(
-					'key'			=> 'pp_gallery_count',
+					'key'			=> 'gallery_count',
 					'type' 			=> 'count_select',
 					'count_start'	=> 1,
 					'count_number'	=> 20,
@@ -83,12 +83,12 @@ class PLGallery extends PageLinesSection {
 					'label' 	=> __( 'Number of Items to Configure', 'pagelines' ),
 				),
 				array(
-					'key'			=> 'pp_gallery_title',
+					'key'			=> 'gallery_title',
 					'type' 			=> 'text',
 					'label' 	=> __( 'Gallery Title', 'pagelines' ),
 				),
 				array(
-					'key'			=> 'pp_gallery_desc',
+					'key'			=> 'gallery_desc',
 					'type' 			=> 'textarea',
 					'label' 	=> __( 'Gallery Description', 'pagelines' ),
 				),
@@ -96,20 +96,20 @@ class PLGallery extends PageLinesSection {
 
 		);
 
-		$slides = ($this->opt('pp_gallery_count')) ? $this->opt('pp_gallery_count') : $this->default_limit;
+		$slides = ($this->opt('gallery_count')) ? $this->opt('gallery_count') : $this->default_limit;
 	
 		for($i = 1; $i <= $slides; $i++){
 
 			$opts = array();
 			
 			$opts[] = array(
-				'key'		=> 'pp_gallery_image_'.$i,
+				'key'		=> 'gallery_image_'.$i,
 				'label'		=> __( 'Slide Image', 'pagelines' ),
 				'type'		=> 'image_upload',
 			);
 
 			$opts[] = array(
-				'key'		=> 'pp_gallery_url_'.$i,
+				'key'		=> 'gallery_url_'.$i,
 				'label'	=> __( 'Slide Video URL (Vimeo or Youtube)', 'pagelines' ),
 				'type'	=> 'text', 
 				'help'	=> __('<strong>Ex.</strong><br/ > http://www.youtube.com/watch?v=rNYiWNLtk5A <br />
@@ -130,14 +130,14 @@ class PLGallery extends PageLinesSection {
 	
 	function the_media(){
 		
-		$num = ($this->opt('pp_gallery_count')) ? $this->opt('pp_gallery_count') : $this->default_limit;
+		$num = ($this->opt('gallery_count')) ? $this->opt('gallery_count') : $this->default_limit;
 		$out = array();
 		
 		for($i = 1; $i <= $num; $i++):
 			
-			$title = ($this->opt('pp_gallery_title_'.$i)) ? $this->opt('pp_gallery_title_'.$i) : ''; 
-			$url = ($this->opt('pp_gallery_url_'.$i)) ? $this->opt('pp_gallery_url_'.$i) : '';
-			$img = ($this->opt('pp_gallery_image_'.$i)) ? $this->opt('pp_gallery_image_'.$i) : '';
+			$title = ($this->opt('gallery_title_'.$i)) ? $this->opt('gallery_title_'.$i) : ''; 
+			$url = ($this->opt('gallery_url_'.$i)) ? $this->opt('gallery_url_'.$i) : '';
+			$img = ($this->opt('gallery_image_'.$i)) ? $this->opt('gallery_image_'.$i) : '';
 			
 			if($url != '' || $img != ''){
 				$out[] = array(
@@ -164,30 +164,23 @@ class PLGallery extends PageLinesSection {
 		
 		return $out;
 	}
-	
-	function pl_desc(){
-		?>
-			
-		<?php
-	}
-
 
    function section_template( ) {
 	
-		$title = ( $this->opt('pp_gallery_title') ) ? sprintf( '<h2 class="pp-gallery-title" data-sync="pp_gallery_title">%s</h2>', $this->opt('pp_gallery_title') ) : '';
-		$desc = ( $this->opt('pp_gallery_desc') ) ? sprintf( '<div class="pp-gallery-desc">%s</div>', $this->opt('pp_gallery_desc') ) : '';
+		$title = ( $this->opt('gallery_title') ) ? sprintf( '<h2 class="pl-gallery-title" data-sync="gallery_title">%s</h2>', $this->opt('gallery_title') ) : '';
+		$desc = ( $this->opt('gallery_desc') ) ? sprintf( '<div class="pl-gallery-desc">%s</div>', $this->opt('gallery_desc') ) : '';
 	
 		
 	 ?>
 	
-	<div class="pp-gallery-wrap">
-		<?php printf('<div class="pp-gallery-details">%s%s</div>', $title, $desc); ?>
-		<div id="pp-gallery" class="pp-gallery royalSlider videoGallery rsDefault">
+	<div class="pl-gallery-wrap">
+		<?php printf('<div class="pl-gallery-details">%s%s</div>', $title, $desc); ?>
+		<div id="pl-gallery" class="pl-gallery royalSlider videoGallery rsDefault">
 			<?php foreach($this->the_media() as $m): 
 				
 				$vid_url = (isset( $m['url'] ) &&  $m['url'] != '') ? sprintf('data-rsVideo="%s"', $m['url']) : ''; ?>
 
-				<div class="pp-gallery-slide">
+				<div class="pl-gallery-slide">
 					<img class="rsImg" <?php echo $vid_url;?> src="<?php echo $m['img'];?>"/>
 					<span class="rsTmb">
 						<div class="video-nav-img">

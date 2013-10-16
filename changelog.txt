@@ -1,0 +1,10 @@
+*** Viewer Changelog ***
+
+16 October 2013 - Version 1.0.1
+	
+	* Gallery Section made responsive
+	* Quotes Section made responsive
+
+15 October 2013 - Version 1.0.0
+	
+	* Initial Release

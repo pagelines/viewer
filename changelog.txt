@@ -4,6 +4,9 @@
 	
 	* Gallery Section made responsive
 	* Quotes Section made responsive
+      	* JSON file updated
+	* Page templates added
+	* Homepage PSD added
 
 15 October 2013 - Version 1.0.0
 	

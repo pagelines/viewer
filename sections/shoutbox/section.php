@@ -83,7 +83,7 @@ class PLShoutBox extends PageLinesSection {
 
 		$content = $this->opt('shoutbox_content');
 		
-		$content = (!$content) ? '<p><strong>Alert Box</strong> &raquo; Add Content!</p>' : sprintf('%s', do_shortcode( wpautop($content) ) ); 
+		$content = (!$content) ? '<p><strong>ShoutBox</strong> &raquo; Add Content!</p>' : sprintf('%s', do_shortcode( wpautop($content) ) ); 
 			
 		$align = ($this->opt('shoutbox_align', $this->oset)) ? $this->opt('shoutbox_align', $this->oset) : 'center';
 		

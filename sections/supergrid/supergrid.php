@@ -63,6 +63,16 @@ class SuperGrid extends PageLinesSection {
 					'shortexp' 		=> __( 'Default is <strong>255px</strong>.', 'pagelines' )
 
 				),
+				array(
+					'key'			=> 'supergrid_gutter_width',
+					'type' 			=> 'count_select',
+					'count_start'	=> 0,
+					'count_number'	=> 70,
+					'default'		=> 0,
+					'label'		=> __( 'Gutter width in pixels', 'pagelines' ),
+					'shortexp' 		=> __( 'Default is <strong>0</strong>.', 'pagelines' )
+
+				),
 			)
 
 		);
@@ -79,10 +89,13 @@ class SuperGrid extends PageLinesSection {
 	function section_head(){
 		
 		$width = ($this->opt('supergrid_width', $this->oset)) ? $this->opt('supergrid_width', $this->oset) : 300;
+		$gutterwidth = ($this->opt('supergrid_gutter_width', $this->oset)) ? $this->opt('supergrid_gutter_width', $this->oset) : 0;
 		
 		?>
 		
-		<style>.supergrid-item{ width: <?php echo $width;?>px; }</style>
+		<style>
+			.supergrid-item{ width: <?php echo $width;?>px; margin-bottom: <?php echo $gutterwidth;?>px;}
+		</style>
 		
 		<script>
 
@@ -96,7 +109,9 @@ class SuperGrid extends PageLinesSection {
 				gridContainer.masonry({
 					itemSelector : '.supergrid-item',
 					columnWidth: <?php echo $width; ?>,
+					gutterWidth: <?php echo $gutterwidth; ?>,
 					
+					isAnimated: true,
 					isFitWidth: true
 				});
 
